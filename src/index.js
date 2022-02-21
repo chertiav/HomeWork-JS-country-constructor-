@@ -5,7 +5,7 @@ function Country(title, capital, population, area) {
     this.capital = capital;
     this.population = population;
     this.area = area;
-    getCountry = getObj;
+    this.getCountry = getObj;
 }
 
 const Ukraine = new Country('Ukraine', 'Kyiv', 41167336, 603628 + ' km2');
@@ -13,8 +13,10 @@ const Germany = new Country('Federal Republic of Germany', 'Berlin', 83190556, 3
 
 function printCountry(obj){
     for (let key in obj) {
-        getObj(obj);
-        console.log(`${key}: ${obj[key]}`);
+        if (typeof(obj[key]) !== 'function') {
+            console.log(`${key}: ${obj.getCountry()[key]}`);
+           
+        } 
     }
 }
 
